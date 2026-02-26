@@ -23,12 +23,12 @@ def normalize_artist(artist: str) -> str:
     """Normalize an artist name for comparisons."""
     if not artist:
         return ""
-    return artist.strip().lower()
+    return artist.strip()
 
 
 def normalize_genre(genre: str) -> str:
     """Normalize a genre name for comparisons."""
-    return genre.lower().strip()
+    return genre.strip()
 
 
 def normalize_song(raw: Song) -> Song:
@@ -70,10 +70,11 @@ def classify_song(song: Song, profile: Dict[str, object]) -> str:
     hype_keywords = ["rock", "punk", "party"]
     chill_keywords = ["lofi", "ambient", "sleep"]
 
-    is_hype_keyword = any(k in genre for k in hype_keywords)
+    genre_lower = genre.lower()
+    is_hype_keyword = any(k in genre_lower for k in hype_keywords)
     is_chill_keyword = any(k in title for k in chill_keywords)
 
-    if genre == favorite_genre or energy >= hype_min_energy or is_hype_keyword:
+    if genre_lower == str(favorite_genre).lower() or energy >= hype_min_energy or is_hype_keyword:
         return "Hype"
     if energy <= chill_max_energy or is_chill_keyword:
         return "Chill"
