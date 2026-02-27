@@ -1,0 +1,14 @@
+[project]
+name = "ai110-module1tinker-playlistchaos-starter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "streamlit>=1.36.0",
+]
+
+[dependency-groups]
+dev = [
+    "watchdog>=6.0.0",
+]
